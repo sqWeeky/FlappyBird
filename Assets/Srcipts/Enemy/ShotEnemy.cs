@@ -9,18 +9,15 @@ public class ShotEnemy : MonoBehaviour
 
     private Coroutine _coroutine;
 
-    private void Start()
-    {
-        
-        gameObject.name = "Enemy" + Random.Range(0, 1000000);
-    }
-
     private IEnumerator Shoot()
     {
-        Debug.Log(gameObject.name);
-        Instantiate(_bullet, _shotPosition.position, _shotPosition.rotation);
-        yield return new WaitForSeconds(_timer);
-        StartCoroutine(Shoot());
+        var wait = new WaitForSeconds(_timer);
+
+        while (enabled)
+        {
+            Instantiate(_bullet, _shotPosition.position, _shotPosition.rotation);
+            yield return wait;
+        }
     }
 
     public void OnGet()
@@ -30,6 +27,7 @@ public class ShotEnemy : MonoBehaviour
 
     public void OnReturn()
     {
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 }

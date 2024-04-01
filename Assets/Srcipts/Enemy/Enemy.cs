@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour, IInteractable
 {
     [SerializeField] private ShotEnemy _shot;
 
-   
+    
 
     public void Die()
     {

@@ -22,10 +22,12 @@ public class PoolEnemies : MonoBehaviour
             var enemy = Instantiate(_prefabEnemy);
             enemy.transform.parent = _container;
 
+            enemy.gameObject.SetActive(true);
             enemy.OnGet();
             return enemy;
         }
         var enemy_1 = _poolEnemy.Dequeue();
+        enemy_1.gameObject.SetActive(true);
         enemy_1.OnGet();
         return enemy_1;
     }

@@ -45,12 +45,11 @@ public class Ship : MonoBehaviour
         if (interactable is Star)
         {
             _scoreCounter.Add();
-            
         }
-        else if (interactable is Enemy)
+        else if (interactable is Enemy || interactable is BulletEnemy)
         {
             GameOver?.Invoke();
-        }
+        }        
     }
 
     public void Reset()
