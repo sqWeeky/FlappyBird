@@ -9,7 +9,7 @@ public class BulletEnemy : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        StartCoroutine(Death());
+        StartCoroutine(ActivateDeath());
     }
 
     private void Update()
@@ -17,7 +17,7 @@ public class BulletEnemy : MonoBehaviour, IInteractable
         transform.Translate(transform.right * _speed * Time.deltaTime);
     }
 
-    private IEnumerator Death()
+    private IEnumerator ActivateDeath()
     {
         yield return new WaitForSeconds(_timeDeath);
         Destroy(gameObject);
