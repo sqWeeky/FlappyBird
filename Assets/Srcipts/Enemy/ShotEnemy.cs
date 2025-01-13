@@ -9,14 +9,16 @@ public class ShotEnemy : MonoBehaviour
 
     private Coroutine _coroutine;
 
+
     private IEnumerator Shoot()
     {
         var wait = new WaitForSeconds(_timer);
 
         while (enabled)
         {
-            Instantiate(_bullet, _shotPosition.position, _shotPosition.rotation);
             yield return wait;
+            Debug.Log(gameObject.name);
+            var bullet = Instantiate(_bullet, _shotPosition.position, _shotPosition.rotation);
         }
     }
 
